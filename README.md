@@ -23,7 +23,8 @@ conda env remove --name test_conda
 
 # Building the conda package.
 
-Go to the folder containing the source code and meta.yaml and setup.py folder which is placed
+Go to the folder containing the source code and meta.yaml and setup.py folder which is placed.
+
 Example
 
     .
