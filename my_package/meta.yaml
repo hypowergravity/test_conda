@@ -1,0 +1,29 @@
+# my_package/meta.yaml
+package:
+  name: my_package
+  version: 0.1
+
+source:
+  path: ../my_package
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python=>3.7
+    - cctbx==2022.5
+    - pymol-open-source
+  channels:
+    - conda-forge
+
+about:
+  home: https://github.com/hypowergravity/test_conda
+  license: BSD-3-Clause
+  summary: "My package that prints the version of cctbx."
+
+build:
+  number: 0
+  # script: "bash build.sh"   # on Unix/Linux/MacOS
+  # # or
+  # script: "cmd.exe /c build.bat"   # on Windows
