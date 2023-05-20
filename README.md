@@ -1,5 +1,5 @@
 ---
-title: making a test conda package
+title: Making a test conda package
 author: Sriram Srinivasa Raghavan
 date: May 2023
 ---
