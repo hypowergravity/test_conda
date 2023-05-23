@@ -6,7 +6,7 @@ date: May 2023
 
 # Test Conda package
 
-This is a repository for creating a test conda package. The package, named 'my_package', simply prints the installed version of cctbx as a command-line argument.
+This is a repository for creating a test conda package. The package, named 'my_package', simply prints the installed version of cctbx as a command-line argument and prints hello world.
 
 # Creating a conda environment
 
