@@ -27,18 +27,18 @@ Go to the folder containing the source code and meta.yaml and setup.py folder wh
 
 Example
 
-.
-├── README.md
-└── my_package
-    ├── build.bat
-    ├── build.sh
-    ├── meta.yaml
-    ├── my_package
-    │   ├── __init__.py
-    │   ├── hello.cpp
-    │   ├── hello.f90
-    │   └── main.py
-    └── setup.py
+    .
+    ├── README.md
+    └── my_package
+        ├── build.bat
+        ├── build.sh
+        ├── meta.yaml
+        ├── my_package
+        │   ├── __init__.py
+        │   ├── hello.cpp
+        │   ├── hello.f90
+        │   └── main.py
+        └── setup.py
 
 
 Now, build the conda recipe in the test_conda channel within the parent directory "my_package" containing meta.yaml and setup.py files.
