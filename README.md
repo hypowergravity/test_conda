@@ -35,8 +35,6 @@ Example
         ├── meta.yaml
         ├── my_package
         │   ├── __init__.py
-        │   ├── hello.cpp
-        │   ├── hello.f90
         │   └── main.py
         └── setup.py
 
