@@ -1,0 +1,195 @@
+<!doctype html>
+<html >
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--[if lt IE 9]>
+                <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+        <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="template.css" /> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/template.css" />
+
+    <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <!-- <script type='text/javascript' src='menu/js/jquery.cookie.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.hoverIntent.minified.js'></script> -->
+    <!-- <script type='text/javascript' src='menu/js/jquery.dcjqaccordion.2.7.min.js'></script> -->
+
+    <!-- <link href="menu/css/skins/blue.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/graphite.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <link href="menu/css/skins/grey.css" rel="stylesheet" type="text/css" /> -->
+  
+    <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+        
+  
+    <!-- <script src="script.js"></script> -->
+  
+    <!-- <script src="jquery.sticky-kit.js "></script> -->
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.cookie.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.hoverIntent.minified.js'></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/js/jquery.dcjqaccordion.2.7.min.js'></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/blue.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/graphite.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/menu/css/skins/grey.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/gh/ryangrose/easy-pandoc-templates@948e28e5/css/elegant_bootstrap.css" rel="stylesheet" type="text/css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/script.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/gh/diversen/pandoc-bootstrap-adaptive-template@959c3622/jquery.sticky-kit.js"></script>
+    <meta name="generator" content="pandoc" />
+  <meta name="author" content="Sriram Srinivasa Raghavan" />
+  <title>Making a test pypi package using flit</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+
+    
+    <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="doc-title">Making a test pypi package using
+flit</span>
+        <ul class="nav pull-right doc-info">
+                    <li><p class="navbar-text">Sriram Srinivasa
+Raghavan</p></li>
+                              <li><p class="navbar-text">May
+2023</p></li>
+                  </ul>
+      </div>
+    </div>
+  </div>
+    <div class="container">
+    <div class="row">
+            <div id="TOC" class="span3">
+        <div class="well toc">
+
+        <ul>
+        <li><a href="#how-to-create-pypi-package-using-flit."
+        id="toc-how-to-create-pypi-package-using-flit.">how to create
+        pypi package using flit.</a></li>
+        <li><a href="#source" id="toc-source">source</a></li>
+        <li><a href="#metadata" id="toc-metadata">metadata</a>
+        <ul>
+        <li><a href="#dependency"
+        id="toc-dependency">dependency</a></li>
+        <li><a href="#shell-script" id="toc-shell-script">shell
+        script</a></li>
+        <li><a href="#project-urls" id="toc-project-urls">project
+        urls</a></li>
+        </ul></li>
+        <li><a href="#install-using-command-line"
+        id="toc-install-using-command-line">Install using command
+        line</a></li>
+        <li><a
+        href="#uninstalling-the-package-can-be-done-with-the-package-name"
+        id="toc-uninstalling-the-package-can-be-done-with-the-package-name">Uninstalling
+        the package can be done with the package name</a></li>
+        </ul>
+
+        </div>
+      </div>
+            <div class="span9">
+
+      
+      <h1 id="how-to-create-pypi-package-using-flit.">how to create pypi
+package using flit.</h1>
+<p>It requires the following main parameters in pyproject.toml file.</p>
+<ul>
+<li>build-system.</li>
+<li>meta-data.</li>
+<li>package dependency.</li>
+<li>scripts( if any).</li>
+<li>project-url</li>
+</ul>
+<h1 id="source">source</h1>
+<p>The src folder has an example script under numpy_numeric/example.py
+which computes arithmetic operations using numpy. The numpy_numeric also
+has a test folder and test_run.py test file which runs test using <a
+href="https://docs.python.org/3/library/unittest.html">unittest</a>.</p>
+<ol type="1">
+<li>build system section, which provides the flit as a requirement for
+installation.</li>
+</ol>
+<hr />
+<pre><code>[build-system]
+requires = [&quot;flit_core &gt;=3.2,&lt;4&quot;]
+build-backend = &quot;flit_core.buildapi&quot;</code></pre>
+<hr />
+<h1 id="metadata">metadata</h1>
+<ol start="2" type="1">
+<li><p>metadata which provides the description of the file and other
+details of the project.</p>
+<p>[project] name = “numpy_numeric” # this is the package name authors =
+[ {name = “sriram raghavan”, email = “hypowergravity@gmail.com”},]
+readme = “Readme.md” classifiers = [ “License :: OSI Approved :: MIT
+License”,] requires-python = “&gt;=3.7” dynamic = [“version”,
+“description”]</p></li>
+</ol>
+<hr />
+<p>if the version is written in the <strong>init</strong>.py file, then
+the version automatically gets read by flit through the aforementioned
+<em>dynamic</em> parameter.</p>
+<p>The doc string in the <strong>init</strong>.py which denotes the
+“description” of the tool is also read by description keyword in
+<em>dynamic</em> parameter. Exaple of doc string is: ““” some example
+description ““”</p>
+<ol start="3" type="1">
+<li>Dependency section denotes the requisites that are required for tool
+functionalities.</li>
+</ol>
+<h2 id="dependency">dependency</h2>
+<p>package dependency required.</p>
+<pre><code>dependencies = [
+    &quot;requests &gt;=2.6&quot;,
+    &quot;configparser; python_version == &#39;2.7&#39;&quot;,
+]</code></pre>
+<ol start="4" type="1">
+<li>If the script has to run using command line, this option can be
+given.</li>
+</ol>
+<h2 id="shell-script">shell script</h2>
+<pre><code>[project.scripts]
+numpy_numeric = &quot;numpy_numeric.example:run&quot;
+numpy_numeric_test = &quot;numpy_numeric.test.test_run:run&quot;
+
+The example.py is that script that contains the function and run that are executable.</code></pre>
+<ol start="5" type="1">
+<li>Project url which provides documentation of the tool.</li>
+</ol>
+<h2 id="project-urls">project urls</h2>
+<pre><code>[project.urls]
+Documentation = &quot;https://github.com/hypowergravity/test_pypi&quot;
+Source = &quot;https://github.com/hypowergravity/test_pypi&quot;</code></pre>
+<ol start="6" type="1">
+<li>Building the package using flit Once all the inputs are given in the
+project.toml file, flit build command can be used to build the package.
+if flit is not installed,</li>
+</ol>
+<pre><code>pip install flit</code></pre>
+<pre class="bash"><code>flit build</code></pre>
+<ul>
+<li>local installation of the package</li>
+</ul>
+<h1 id="install-using-command-line">Install using command line</h1>
+<pre class="bash"><code>pip install dist/numpy_numeric-0.1.0.tar.gz</code></pre>
+<ul>
+<li>uninstallation of the local installed package.</li>
+</ul>
+<h1
+id="uninstalling-the-package-can-be-done-with-the-package-name">Uninstalling
+the package can be done with the package name</h1>
+<pre class="bash"><code>pip uninstall numpy_numeric</code></pre>
+            </div>
+    </div>
+  </div>
+  <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+
+</body>
+</html>
