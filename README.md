@@ -33,7 +33,7 @@ Example
         ├── build.bat
         ├── build.sh
         ├── meta.yaml
-        ├── my_package
+        ├── my_package # contains dependency, under run, appliable for both conda and pip packages.
         │   ├── __init__.py
         │   └── main.py
         └── setup.py
